@@ -1,11 +1,12 @@
 ﻿using DesignPatternsApp;
 using DesignPatternsApp.Builder;
+using DesignPatternsApp.Factory;
 using DesignPatternsApp.Observer;
 using DesignPatternsApp.Strategy;
 
 var paymentProcessor = new PaymentProcessor();
 
-// Create users using the Fluent Builder
+// Create users using the Fluent Builder Design Pattern
 var user1 = new User.Builder()
     .SetName("John Doe")
     .SetEmail("john.doe@example.com")
@@ -18,14 +19,29 @@ var user2 = new User.Builder()
     .SetPhoneNumber("987-654-3210")
     .Build();
 
-// Attach observers for the users
+// Attach observers for the users // Observer Design Pattern
 paymentProcessor.Attach(new EmailNotifier(user1));
 paymentProcessor.Attach(new SmsNotifier(user2));
 
+// Set a product // Factory Method Design Pattern
+Console.WriteLine("Choose a product: 1. Physical Product  2. Digital Product");
+var productChoice = Console.ReadLine();
+switch (productChoice)
+{
+    case "1":
+        paymentProcessor.SetProduct(new PhysicalProductFactory());
+        break;
+    case "2":
+        paymentProcessor.SetProduct(new DigitalProductFactory());
+        break;
+    default:
+        Console.WriteLine("Invalid product choice.");
+        return;
+}
 
+// Set a payment strategy // Strategy Design Pattern
 Console.WriteLine("Choose a payment method: 1. Credit Card  2. PayPal");
 var choice = Console.ReadLine();
-
 switch (choice)
 {
     case "1":

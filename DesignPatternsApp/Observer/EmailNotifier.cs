@@ -11,9 +11,9 @@ namespace DesignPatternsApp.Observer
             _user = user;
         }
 
-        public void Update(decimal amount)
+        public void Update(decimal amount, string product)
         {
-            Console.WriteLine($"Email Notification to {_user.Email}: A payment of {amount:C} was processed.");
+            Console.WriteLine($"{product}: Email Notification to {_user.Email}: A payment of {amount:C} was processed.");
         }
     }
 }

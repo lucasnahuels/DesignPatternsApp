@@ -1,4 +1,5 @@
 ﻿using DesignPatternsApp.Builder;
+using DesignPatternsApp.Factory;
 
 namespace DesignPatternsApp.Observer
 {
@@ -11,9 +12,9 @@ namespace DesignPatternsApp.Observer
             _user = user;
         }
 
-        public void Update(decimal amount)
+        public void Update(decimal amount, string product)
         {
-            Console.WriteLine($"SMS Notification to {_user.PhoneNumber}: A payment of {amount:C} was processed.");
+            Console.WriteLine($"{product}: SMS Notification to {_user.PhoneNumber}: A payment of {amount:C} was processed.");
         }
     }
 }
