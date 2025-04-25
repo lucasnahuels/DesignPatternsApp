@@ -1,5 +1,11 @@
 ﻿namespace DesignPatternsApp.Builder
 {
+    /*
+    The Fluent Builder design pattern is a variation of the Builder pattern.
+    The Fluent Builder pattern is a powerful design pattern that enables the creation 
+    of complex objects through a more readable and maintainable fluent interface
+    (in this context, the term "fluent interface" refers to the builder class).
+     */
     public class User
     {
         public string Name { get; private set; }
